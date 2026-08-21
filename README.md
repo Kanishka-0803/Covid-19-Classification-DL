@@ -1,27 +1,42 @@
-# Covid-19 Image Classification
+# COVID-19 Image Classification (Chest X-Ray)
 
-Deep learning computer vision project utilizing Convolutional Neural Networks (CNN) in TensorFlow/Keras to rapidly classify chest X-ray images into COVID-19 positive or Normal cases, aiding healthcare triage and diagnostics.
+A Deep Learning & Computer Vision project using Convolutional Neural Networks (CNNs) built with TensorFlow/Keras to classify chest X-ray images as **COVID-19 Positive** or **Normal (Healthy)** for rapid clinical triage and automated diagnostics.
 
-Dataset
-COVID-19 Chest X-ray Dataset: 251 RGB chest X-ray images (128x128 resolution, 3 channels) stored as NumPy arrays (CovidImages.npy) with binary diagnostic labels (CovidLabels.csv) for COVID-19 and Normal cases.
+## Dataset
 
-Requirements
+- **Source & Format:** Preprocessed NumPy tensor arrays (`CovidImages.npy`) paired with labels (`CovidLabels.csv`)
+- **Volume:** 251 chest X-ray images
+- **Dimensions:** 128 × 128 pixels, 3 color channels (RGB)
+- **Classes:**
+  - `COVID-19` — patients confirmed positive
+  - `Normal` — healthy individuals with no pulmonary symptoms
+
+## Requirements
+
+```bash
 pip install tensorflow==2.18.0 scikit-learn==1.3.2 matplotlib==3.8.3 \
     seaborn==0.13.2 numpy==1.26.4 pandas==2.2.2 opencv-python
-Built for Google Colab with Google Drive integration, but runs in any standard Jupyter environment.
+```
 
-Structure
-Environment Setup & Imports — Setting random seeds (SEED = 42) for reproducibility and loading deep learning/image processing libraries
-Data Ingestion — Mounting Google Drive and loading .npy image tensors and .csv ground-truth labels
-Exploratory Data Analysis — Array shape verification, class distribution inspection, and batch sample visualization across diagnostic labels
-Preprocessing & Encoding — Normalizing pixel values, label encoding (LabelEncoder), categorical conversion, and train/test dataset splitting
-Model Development & Training — Designing sequential 2D Convolutional neural network architectures (Conv2D, MaxPooling2D, Dropout, Dense)
-Evaluation & Diagnostics — Model performance assessment via classification reports and confusion matrices
+Built for Google Colab with Google Drive integration; also compatible with any standard Jupyter environment.
 
-Key Objectives
-Accelerate screening times by delivering automated diagnostic insights from chest radiography
-Mitigate resource constraints and bottlenecks associated with standard laboratory PCR testing
-Maximize multiclass detection sensitivity to ensure reliable patient isolation and clinical triage
+## Notebook Workflow
 
-Usage
-Mount your Google Drive containing CovidImages.npy and CovidLabels.csv, update the file paths in the loading cell, and run the notebook sequentially from top to bottom.
+1. **Environment Setup** — fixed `SEED = 42` across NumPy and TensorFlow for reproducibility
+2. **Data Ingestion** — mounted Google Drive, loaded `.npy` image arrays and `.csv` metadata
+3. **EDA** — checked array shapes, class distribution, and plotted 3×4 sample image grids
+4. **Preprocessing** — normalized pixel values, encoded labels (`LabelEncoder`, `to_categorical`), split into train/test sets
+5. **CNN Architecture & Training** — Sequential 2D CNN with `Conv2D`, `MaxPooling2D`, `Dropout`, `Flatten`, and `Dense` layers
+6. **Evaluation** — confusion matrix and classification report (precision, recall, F1-score)
+
+## Clinical Objectives
+
+- Accelerate triage with near real-time AI diagnostics from standard radiography
+- Relieve bottlenecks caused by PCR testing delays and supply constraints
+- Support early identification and containment during outbreak surges
+
+## Usage
+
+1. Place `CovidImages.npy` and `CovidLabels.csv` in your Google Drive directory
+2. Update the dataset file paths in the data-loading cell
+3. Run all notebook cells top to bottom
