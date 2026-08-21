@@ -34,9 +34,3 @@ Built for Google Colab with Google Drive integration; also compatible with any s
 - Accelerate triage with near real-time AI diagnostics from standard radiography
 - Relieve bottlenecks caused by PCR testing delays and supply constraints
 - Support early identification and containment during outbreak surges
-
-## Usage
-
-1. Place `CovidImages.npy` and `CovidLabels.csv` in your Google Drive directory
-2. Update the dataset file paths in the data-loading cell
-3. Run all notebook cells top to bottom
